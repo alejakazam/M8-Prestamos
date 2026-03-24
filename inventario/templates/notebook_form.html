@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+<div class='row justify-content-center'>
+    <div class='col-md-8 col-lg-6'>
+        <div class='card shadow-sm border-success'>
+            <div class='card-body'>
+                <h2 class='card-title mb-4 text-success'>
+                    {% if form.instance.pk %}Editar{% else %}Nuevo{% endif %} Notebook
+                </h2>
+                
+                <form method='post' novalidate> {% csrf_token %}
+                    
+                    {% for field in form %}
+                        <div class='mb-3'>
+                            {% if field.name == 'disponible' %}
+                                <div class="form-check">
+                                    {{ field }}
+                                    <label for='{{ field.id_for_label }}' class='form-check-label'>
+                                        {{ field.label }}
+                                    </label>
+                                </div>
+                            {% else %}
+                                <label for='{{ field.id_for_label }}' class='form-label'>
+                                    {{ field.label }}
+                                </label>
+                                {{ field }}
+                            {% endif %}
+                            
+                            {% if field.errors %}
+                                <div class="text-danger small">
+                                    {{ field.errors|striptags }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+
+                    <div class="mt-4">
+                        <button type='submit' class='btn btn-success'>Guardar Cambios</button>
+                        <a href='{% url "notebook_list" %}' class='btn btn-outline-secondary'>Cancelar</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

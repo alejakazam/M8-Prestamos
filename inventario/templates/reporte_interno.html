@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block contenido %}
+<div class='card shadow-sm border-success'>
+ <div class='card-body'>
+  <h2 class='card-title mb-4 text-success'>Reporte interno</h2>
+  <div class='row g-3'>
+   <div class='col-md-4'>
+    <div class='card text-center border-success bg-light'>
+     <div class='card-body'>
+      <h5 class='text-success'>Total</h5>
+      <p class='display-6 fw-bold'>{{ total }}</p>
+     </div>
+    </div>
+   </div>
+   <div class='col-md-4'>
+    <div class='card text-center text-white bg-success'>
+     <div class='card-body'>
+      <h5>Disponibles</h5>
+      <p class='display-6 fw-bold'>{{ disponibles }}</p>
+     </div>
+    </div>
+   </div>
+   <div class='col-md-4'>
+    <div class='card text-center border-success'>
+     <div class='card-body'>
+      <h5 class='text-muted'>En mantención</h5>
+      <p class='display-6'>{{ mantencion }}</p>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+</div>
+{% endblock %}
